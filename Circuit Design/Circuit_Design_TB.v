@@ -26,11 +26,14 @@ module Circuit_Design_TB;
 	always # 50 clockPulse = ~clockPulse;  //T = 100 ns
 	
 	initial begin
+
+		// OutPut = 0
 		Start = 1;
 		InputPorts = 1000;
 
 		#100;
 		
+		// OutPut = 0
 		Start = 0;
 		InputPorts = 1010;
 

@@ -9,20 +9,19 @@ module Circuit_Design(Start,clockPulse,InputPorts,Count,OverFlow);
 	output reg [7:0] Count;
 	output reg OverFlow;
 	
-	// Inital Value
 	initial 
 		begin
 			Count = 8'b0;
 			OverFlow = 1'b0;
 		end
 	
-	// OR
-	wire OR_output;
-	or  (OR_output, InputPorts[0], ~InputPorts[1], InputPorts[2], ~InputPorts[3]);
+	// AND
+	wire AND_output;
+	and  (AND_output, InputPorts[0], ~InputPorts[1], InputPorts[2], ~InputPorts[3]);
 
 	// Sum Operation
 	wire [8:0] AddedValue;
-	assign AddedValue = Count +{8'h0 , OR_output};
+	assign AddedValue = Count + {8'h0,AND_output};
 	
 	// Upper Multiplexer
 	reg [7:0]UM_output;
